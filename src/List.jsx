@@ -1,17 +1,18 @@
+import "./List.css";
+
 function List() {
   const animals = ["Lion", "Cow", "Snake", "Lizard"];
 
   return (
     <div>
-      <h1>Animals: </h1>
-      {animals.map((animal) => {
-        return <h3>{animal}</h3>;
-      })}
-      <ul>
-        {animals.map((animal) => {
-          return <li key={animal}>{animal}</li>;
-        })}
-      </ul>
+      <form>
+        <label>Name</label>
+        <input />
+        <label>Email</label>
+        <input />
+        <label>Phone Number</label>
+        <input />
+      </form>
     </div>
   );
 }
