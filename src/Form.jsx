@@ -1,22 +1,44 @@
+import React, { useState } from "react";
 import "./Form.css";
 
 function List() {
-  const animals = ["Lion", "Cow", "Snake", "Lizard"];
+  const [submitted, setSubmitted] = useState(false);
 
+  function Display() {
+    if (submitted) {
+      return (
+        <div>
+          <h1>false</h1>
+        </div>
+      );
+    }
+    return (
+      <div>
+        <h1>CV Generator</h1>
+        <h2>General Information</h2>
+        <form>
+          <label>Name</label>
+          <input />
+          <label>Email</label>
+          <input />
+          <label>Phone Number</label>
+          <input />
+        </form>
+      </div>
+    );
+  }
+
+  function generateCV() {
+    // alert(submitted);
+    setSubmitted(true);
+    Display();
+    console.log(submitted);
+  }
   return (
     <div>
-      <h1>CV Generator</h1>
-      <h2>General Information</h2>
-      <form>
-        <label>Name</label>
-        <input />
-        <label>Email</label>
-        <input />
-        <label>Phone Number</label>
-        <input />
-      </form>
+      <Display />
 
-      <h2>Educational Experience</h2>
+      {/* <h2>Educational Experience</h2>
       <form>
         <label>School Name</label>
         <input />
@@ -36,7 +58,9 @@ function List() {
         <textarea />
         <label>Date of Work</label>
         <input />
-      </form>
+      </form> */}
+      <button onClick={generateCV}>Submit</button>
+      <button>Edit</button>
     </div>
   );
 }
