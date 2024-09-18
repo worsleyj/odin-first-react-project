@@ -1,10 +1,11 @@
-import "./List.css";
+import "./Form.css";
 
 function List() {
   const animals = ["Lion", "Cow", "Snake", "Lizard"];
 
   return (
     <div>
+      <h1>CV Generator</h1>
       <h2>General Information</h2>
       <form>
         <label>Name</label>
