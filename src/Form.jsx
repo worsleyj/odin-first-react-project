@@ -5,6 +5,7 @@ function Form() {
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   function Display() {
     if (submitted) {
@@ -12,16 +13,13 @@ function Form() {
         <div>
           <h1>{name}</h1>
           <h2>{email}</h2>
-          <h2>252-621-0844</h2>
+          <h2>{phoneNumber}</h2>
         </div>
       );
     }
 
     function CustomInput({ id, saved }) {
       const [value, setValue] = useState(saved);
-      // if (submitted) {
-      //   return <h2>{value}</h2>;
-      // }
       return (
         <input
           id={id}
@@ -42,7 +40,7 @@ function Form() {
           <label>Email</label>
           <CustomInput id="email" saved={email} />
           <label>Phone Number</label>
-          <input />
+          <CustomInput id="phoneNumber" saved={phoneNumber} />
         </form>
       </div>
     );
@@ -52,40 +50,17 @@ function Form() {
     setSubmitted(true);
     const nameInput = document.getElementById("name");
     const emailInput = document.getElementById("email");
+    const phoneNumberInput = document.getElementById("phoneNumber");
     setName(nameInput.value);
     setEmail(emailInput.value);
+    setPhoneNumber(phoneNumberInput.value);
   }
 
-  function editCV() {
-    setSubmitted(false);
-  }
   return (
     <div>
       <Display />
-
-      {/* <h2>Educational Experience</h2>
-      <form>
-        <label>School Name</label>
-        <input />
-        <label>Field of Study</label>
-        <input />
-        <label>Date of Study</label>
-        <input />
-      </form>
-
-      <h2>Work Experience</h2>
-      <form>
-        <label>Company Name</label>
-        <input />
-        <label>Position Title</label>
-        <input />
-        <label>Main Responsbilities</label>
-        <textarea />
-        <label>Date of Work</label>
-        <input />
-      </form> */}
       <button onClick={generateCV}>Submit</button>
-      <button onClick={editCV}>Edit</button>
+      <button onClick={() => setSubmitted(false)}>Edit</button>
     </div>
   );
 }
