@@ -1,23 +1,13 @@
 import React, { useState } from "react";
-import "./Form.css";
+import "../styles/Form.css";
 
-function Form() {
+export default function Form() {
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
-  function Display() {
-    if (submitted) {
-      return (
-        <div>
-          <h1>{name}</h1>
-          <h2>{email}</h2>
-          <h2>{phoneNumber}</h2>
-        </div>
-      );
-    }
-
+  function Inputs() {
     function CustomInput({ id, saved }) {
       const [value, setValue] = useState(saved);
       return (
@@ -46,6 +36,15 @@ function Form() {
     );
   }
 
+  function Buttons() {
+    return (
+      <div>
+        <button onClick={generateCV}>Submit</button>
+        <button onClick={() => setSubmitted(false)}>Edit</button>
+      </div>
+    );
+  }
+
   function generateCV() {
     setSubmitted(true);
     const nameInput = document.getElementById("name");
@@ -56,13 +55,21 @@ function Form() {
     setPhoneNumber(phoneNumberInput.value);
   }
 
+  if (submitted) {
+    return (
+      <div>
+        <h1>{name}</h1>
+        <h2>{email}</h2>
+        <h2>{phoneNumber}</h2>
+        <Buttons />
+      </div>
+    );
+  }
+
   return (
     <div>
-      <Display />
-      <button onClick={generateCV}>Submit</button>
-      <button onClick={() => setSubmitted(false)}>Edit</button>
+      <Inputs />
+      <Buttons />
     </div>
   );
 }
-
-export default Form;

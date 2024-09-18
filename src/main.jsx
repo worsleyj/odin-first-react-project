@@ -1,10 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import List from "./Form.jsx";
-import "./index.css";
+import Form from "./components/Form.jsx";
+import "./styles/index.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <List />
+    <Form />
   </StrictMode>
 );
