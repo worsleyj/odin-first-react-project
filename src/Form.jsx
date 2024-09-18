@@ -1,26 +1,46 @@
 import React, { useState } from "react";
 import "./Form.css";
 
-function List() {
+function Form() {
   const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   function Display() {
     if (submitted) {
       return (
         <div>
-          <h1>false</h1>
+          <h1>{name}</h1>
+          <h2>{email}</h2>
+          <h2>252-621-0844</h2>
         </div>
       );
     }
+
+    function CustomInput({ id, saved }) {
+      const [value, setValue] = useState(saved);
+      // if (submitted) {
+      //   return <h2>{value}</h2>;
+      // }
+      return (
+        <input
+          id={id}
+          type="text"
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+        />
+      );
+    }
+
     return (
       <div>
         <h1>CV Generator</h1>
         <h2>General Information</h2>
         <form>
           <label>Name</label>
-          <input />
+          <CustomInput id="name" saved={name} />
           <label>Email</label>
-          <input />
+          <CustomInput id="email" saved={email} />
           <label>Phone Number</label>
           <input />
         </form>
@@ -29,10 +49,15 @@ function List() {
   }
 
   function generateCV() {
-    // alert(submitted);
     setSubmitted(true);
-    Display();
-    console.log(submitted);
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    setName(nameInput.value);
+    setEmail(emailInput.value);
+  }
+
+  function editCV() {
+    setSubmitted(false);
   }
   return (
     <div>
@@ -60,9 +85,9 @@ function List() {
         <input />
       </form> */}
       <button onClick={generateCV}>Submit</button>
-      <button>Edit</button>
+      <button onClick={editCV}>Edit</button>
     </div>
   );
 }
 
-export default List;
+export default Form;
